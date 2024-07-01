@@ -1,0 +1,8 @@
+install and import mongoose
+create a .env file
+install dotenv
+import "dotenv/config"
+go to mongo and create your database and name it jambo_api
+assign a variable to the url for the jambo_api and paste the link with the password and the api name
+assign a variable in the db file to retrieve the value of the env url
+export the variable to make it accessible to anyone that needs it, ie, dbConnection
