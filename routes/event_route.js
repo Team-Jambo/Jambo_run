@@ -1,7 +1,20 @@
 import { Router } from 'express';
+import {deleteEvents, getEvents, patchEvents, postEvents} from "../controllers/event_controllers.js"
 
-const jambo = Router();
+//create a router
+const eventRouter = Router();
 
-// jamboRouter.get('/events',(req, res, next)=>{
-//     //Get Router
-// })
+
+//Define Routers
+
+eventRouter.get('/events', getEvents);
+
+eventRouter.post('/events', postEvents)
+
+eventRouter.patch('/events',patchEvents);
+
+eventRouter.delete('/events', deleteEvents)
+
+
+
+export default eventRouter;
