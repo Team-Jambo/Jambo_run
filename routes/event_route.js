@@ -11,9 +11,9 @@ eventRouter.get('/events', getEvents);
 
 eventRouter.post('/events', postEvents)
 
-eventRouter.patch('/events',patchEvents);
+eventRouter.patch('/events/:id',patchEvents);
 
-eventRouter.delete('/events', deleteEvents)
+eventRouter.delete('/events/:id', deleteEvents);
 
 
 

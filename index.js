@@ -1,8 +1,16 @@
 //  import the express module
 import express from 'express';
 
+
+//import mongoose
+import mongoose from 'mongoose';
+
+
+// import event router
+import eventRouter from './routes/event_route.js';
+
 // import dotenv to enable your .env file to work 
-import { dbConnection } from './config/db';
+import { dbConnection } from './config/db.js';
 
 //  instantiate express
 const app = express();

@@ -1,68 +1,68 @@
-import { EventModel } from "../model/event_model.js";
+import { eventModel } from "../model/event_model.js";
 
 
 
 
 
 //get all events
-export const getEvents = async(req,res,next) =>{
+export const getEvents = async (req, res, next) => {
     try {
         //Get all events from database
-        const allEvents = await EventModel.find()
+        const allEvents = await eventModel.find();
 
         //Return all events as response
         res.json(allEvents);
     } catch (error) {
         next(error);
-        
+
     }
-}
+};
 
 
 
 //Post all events
 //Create endpoints
-export const postEvents = async (req,res,next) =>{
+export const postEvents = async (req, res, next) => {
     try {
         //Add events to database
-        const newEvent = await EventModel.create(req.body);
+        const newEvent = await eventModel.create(req.body);
 
         //return response
         res.json(newEvent);
     } catch (error) {
-        next(error); 
+        next(error);
     }
-}
+};
 
 
 //Patch events
 //Update endpoints
-export const patchEvents = async(req,res,next)=>{
+export const patchEvents = async (req, res, next) => {
     try {
         //Update event by id
-        const updatedEvent =await EventModel.findByIdAndUpdate(req.params.id,req.body,{new:true});
+        const updatedEvent = await eventModel.findByIdAndUpdate(req.params.id, req.body, { new: true});
 
         //Return response
-        res.json(updatedEvent)
+        res.json(updatedEvent);
     } catch (error) {
         next(error);
-        
+
     }
-}
+};
 
 
 
 //Delete events
 export const deleteEvents = async (req, res, next) => {
 
-try {
+    try {
         //Delete event by ID
-        const deleteEvents = await EventModel.findByIdAndDelete(req.params.id);
-    
+        const deleteEvents = await eventModel.findByIdAndDelete(req.params.id);
+
         //return response
         res.json(deleteEvents);
-} catch (error) {
-    next(error)
-    
-}
-}
+    } catch (error) {
+        next(error);
+
+    }
+};
