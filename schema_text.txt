@@ -1,0 +1,52 @@
+Tables:
+
+Event:
+
+Columns:
+id (INT PRIMARY KEY): Unique identifier for the event
+name (VARCHAR(255)): Title of the event
+description (TEXT): Detailed description of the event
+start_date (DATETIME): Date and time the event starts
+end_date (DATETIME): Optional date and time the event ends (can be null)
+location_id (INT FOREIGN KEY REFERENCES Location(id)): ID of the location where the event takes place
+image_url (VARCHAR(255)): URL of the event image (optional)
+category (VARCHAR(50)): Category of the event (e.g., concert, festival)
+
+
+Artist:
+
+Columns:
+id (INT PRIMARY KEY): Unique identifier for the artist
+name (VARCHAR(255)): Name of the artist or band
+genre (VARCHAR(50)): Music genre of the artist
+website (VARCHAR(255)): Optional website URL of the artist (can be null)
+social_media (JSON): Optional JSON object containing links to social media profiles (can be null)
+image_url (VARCHAR(255)): URL of the artist image (optional)
+
+
+Location: (Optional - Can be omitted if venue details are not required)
+
+Columns:
+id (INT PRIMARY KEY): Unique identifier for the location
+venue_name (VARCHAR(255)): Name of the venue hosting the event
+address (VARCHAR(255)): Address of the venue
+city (VARCHAR(100)): City where the venue is located
+state_province (VARCHAR(100)): State or province where the venue is located
+country (VARCHAR(100)): Country where the venue is located
+Stage (Optional - For events with multiple stages)
+
+Columns:
+id (INT PRIMARY KEY): Unique identifier for the stage
+event_id (INT FOREIGN KEY REFERENCES Event(id)): ID of the event the stage belongs to
+name (VARCHAR(255)): Name of the stage (optional)
+
+
+Ticket (Optional - For ticketing functionality)
+
+Columns:
+id (INT PRIMARY KEY): Unique identifier for the ticket
+user_id (INT FOREIGN KEY REFERENCES User(id)): ID of the user who purchased the ticket (if applicable)
+event_id (INT FOREIGN KEY REFERENCES Event(id)): ID of the event the ticket is for
+ticket_type (VARCHAR(50)): Type of ticket (e.g., VIP, General Admission)
+price (DECIMAL): Price of the ticket
+quantity (INT): Number of tickets available for this type
