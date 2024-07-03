@@ -1,34 +1,31 @@
 import { eventModel } from "../model/event_model.js";
 
 
-
-
-
-//get all events
+// Get All events
 export const getEvents = async (req, res, next) => {
     try {
-        //Get all events from database
-        const allEvents = await eventModel.find();
-
-        //Return all events as response
-        res.json(allEvents);
+        // Get query
+        const {limit, skip, filter} = req.query;
+        // Get all events from database
+        const allEvents = await eventModel
+        .find(filter ? JSON.parse(filter) : {})
+        .limit(limit ? parseInt(limit) : undefined)
+        .skip(skip ? parseInt(skip) : undefined);
+        // Return all events as response
+        res.status(200).json(allEvents);
     } catch (error) {
         next(error);
-
     }
 };
 
 
-
-//Post all events
-//Create endpoints
+//    Post All events
 export const postEvents = async (req, res, next) => {
     try {
-        //Add events to database
-        const newEvent = await eventModel.create(req.body);
-
-        //return response
-        res.json(newEvent);
+        // add recipe to database
+        const newEvents = await eventModel.create(req.body);
+        // Return response
+        res.json(newEvents);
     } catch (error) {
         next(error);
     }
@@ -43,7 +40,7 @@ export const patchEvents = async (req, res, next) => {
         const updatedEvent = await eventModel.findByIdAndUpdate(req.params.id, req.body, { new: true});
 
         //Return response
-        res.json(updatedEvent);
+        res.status(200).json(updatedEvent);
     } catch (error) {
         next(error);
 
@@ -60,7 +57,7 @@ export const deleteEvents = async (req, res, next) => {
         const deleteEvents = await eventModel.findByIdAndDelete(req.params.id);
 
         //return response
-        res.json(deleteEvents);
+        res.status(200).json(deleteEvents);
     } catch (error) {
         next(error);
 
