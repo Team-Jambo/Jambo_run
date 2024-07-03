@@ -23,7 +23,10 @@ export const getEvents = async (req, res, next) => {
 export const postEvents = async (req, res, next) => {
     try {
         // add recipe to database
-        const newEvents = await eventModel.create(req.body);
+        const newEvents = await eventModel.create({/* anywhere there is await, add async at the top*/
+            ...req.body,
+            image: req.file.filename
+        });  
         // Return response
         res.json(newEvents);
     } catch (error) {
