@@ -22,10 +22,10 @@ export const getEvents = async (req, res, next) => {
 //    Post All events
 export const postEvents = async (req, res, next) => {
     try {
-        // add recipe to database
+        // add event to database
         const newEvents = await eventModel.create({/* anywhere there is await, add async at the top*/
             ...req.body,
-            image: req.file.filename
+            image: req.file.filename /*enable file upload*/
         });  
         // Return response
         res.json(newEvents);
