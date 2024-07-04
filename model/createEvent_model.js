@@ -43,4 +43,4 @@ const createEventSchema = new Schema({
 });
 
 //  export the createEvent model
-export const createEventModel = model("createEvent", createEventSchema);
+export const createEventModel = model("create-event", createEventSchema);
