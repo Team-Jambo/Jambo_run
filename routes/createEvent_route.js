@@ -1,27 +1,28 @@
-// // import router
-// import { Router } from "express";
+// import router
+import { Router } from "express";
 
-// import multer from "multer";
-
-// //import remoteUpload
-// import { remoteUpload } from "../middlewares/uploads.js";
+//import remoteUpload
+import { remoteUpload } from "../middlewares/uploads.js";
 
 
-// import { deleteCreateEvent, getCreateEvent, patchCreateEvent, postCreateEvent } from "../controllers/createEvent_controller.js";
+import { createEventsId, deleteCreateEvent, getCreateEvent, patchCreateEvent, postCreateEvent } from "../controllers/createEvent_controller.js";
 
-// // instantiating a router
-// const createRouter = Router();
+// instantiating a router
+const createRouter = Router()
 
-// //Define Routes
-// createRouter.get('/create', getCreateEvent);
+//Define Routes
+createRouter.get('/create', getCreateEvent);
 
-// //Defining a remote upload
-// createRouter.post('/create', remoteUpload.single('image'), postCreateEvent);
+//Defining a remote upload
+createRouter.post('/create', remoteUpload.single('image'), postCreateEvent);
 
-// createRouter.patch('/create/:id', patchCreateEvent);
+createRouter.patch('/create/:id', patchCreateEvent);
 
-// createRouter.delete('/create/:id', deleteCreateEvent);
+createRouter.delete('/create/:id', deleteCreateEvent);
+
+createRouter.get('/create/:id', createEventsId);
 
 
-// // export the createRouter
-// export default createRouter;
+
+// export the createRouter
+export default createRouter;
