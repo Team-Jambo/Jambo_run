@@ -1,10 +1,14 @@
 import { Schema, model, Types } from "mongoose";
 
+// import the reis module
+import { toJSON } from "@reis/mongoose-to-json";
+
+//  Doing a createEvent Schema
 const eventSchema = new Schema({
-    id: {type: String},
-    name: {type: String}, /*Title of the event*/
+    firstName: {type: String},
+    lastName: {type: String},
+    organisation: {type: String},
     email: {type: String,
-        required: true,
         unique: true,
         lowercase: true,
         trim: true,
@@ -12,23 +16,20 @@ const eventSchema = new Schema({
             "Please enter a valid email address"
         ] /* to match a valid email address*/
     },
-    description: {type: String}, /*Detailed description of the event*/
-    ticket: {type: String, 
-        enum: ["Regular", "VIP", "VVIP"]
-    },
-    ticketPrice: {type: String},
-    date: {type: Date, default: Date.now()},/*Date and time the event starts*/
-    location: {type: String, 
-        enum: ["Accra", "Kumasi", "Ho", "Cape Coast", "Koforidua"]
-
-    }, /*ID of the location where the event takes place*/
-    image: {type: String}  
+    phoneNumber:{type: String},
+    eventName: { type: String},
+    description: { type: String},
+    date: {type: Date},
+    // startTime: { type: Date },
+    // tickets: { type: String},  
+    image: {type: String},
 }, {
     timestamps: true
-}); /* to come back to this*/
+});
 
 
-// export the event model
-export const eventModel = model("event", eventSchema);
+eventSchema.plugin(toJSON);
 
 
+//  export the createEvent model now
+export const eventModel = model("event", eventSchema); 

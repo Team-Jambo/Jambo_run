@@ -12,12 +12,12 @@ import expressOasGenerator from "express-oas-generator";
 // import event router
 import eventRouter from './routes/event_route.js';
 
-// import createRouter
-import createRouter from './routes/createEvent_route.js';
+// import userRouter
+import userRouter from './routes/user_route.js';
 
 // import dotenv to enable your .env file to work 
 import { dbConnection } from './config/db.js';
-// import createRouter from './routes/createEvent_route.js';
+
 
 
 // connect to database
@@ -35,7 +35,7 @@ app.use(express.static("uploads"));
 app.use(eventRouter);
 
 // use create router
-app.use(createRouter);
+app.use(userRouter);
 
 expressOasGenerator.handleResponses(app, {
     alwaysServeDocs: true, /* to serve render whether in production or development */
