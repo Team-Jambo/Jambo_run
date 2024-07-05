@@ -6,7 +6,7 @@ import { remoteUpload } from "../middlewares/uploads.js";
 
 import {deleteEvents, getEvents, getEventsId, patchEvents, postEvents} from "../controllers/event_controllers.js";
 
-//create a router
+//create a routers
 const eventRouter = Router();
 
 
