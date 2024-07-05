@@ -15,7 +15,7 @@ const eventRouter = Router();
 eventRouter.get('/events', getEvents);
 
 //Defining a remote upload
-eventRouter.post('/events', remoteUpload.single('image'), postEvents);
+eventRouter.post('/events', remoteUpload.single('imageUrl'), postEvents);
 
 eventRouter.patch('/events/:id',patchEvents);
 
