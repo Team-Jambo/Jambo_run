@@ -23,7 +23,8 @@ const eventSchema = new Schema({
     // startTime: { type: Date },
     // tickets: { type: String},  
     imageUrl: {type: String},
-    favourite: { type: Boolean, default: false}
+    favourite: { type: Boolean, default: false
+    }
 }, {
     timestamps: true
 });
