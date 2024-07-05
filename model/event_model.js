@@ -19,6 +19,7 @@ const eventSchema = new Schema({
     phoneNumber:{type: String},
     eventName: { type: String},
     description: { type: String},
+    ticketPrice: {type: String},
     date: {type: Date},
     // startTime: { type: Date },
     // tickets: { type: String},  
