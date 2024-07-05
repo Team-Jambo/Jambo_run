@@ -25,7 +25,7 @@ export const postEvents = async (req, res, next) => {
         // add event to database
         const newEvents = await eventModel.create({/* anywhere there is await, add async at the top*/
             ...req.body,
-            image: req.file.filename /*enable file upload*/
+            imageUrl: req.file.filename /*enable file upload*/
         });  
         // Return response
         res.json(newEvents);
@@ -39,8 +39,9 @@ export const postEvents = async (req, res, next) => {
 //Update endpoints
 export const patchEvents = async (req, res, next) => {
     try {
+        const eventId = req.params.id;
         //Update event by id
-        const updatedEvent = await eventModel.findByIdAndUpdate(req.params.id, req.body, { new: true});
+        const updatedEvent = await eventModel.findByIdAndUpdate({_id: eventId}, req.body, { new: true});
 
         //Return response
         res.status(200).json(updatedEvent);
