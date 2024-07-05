@@ -1,4 +1,4 @@
-import { Schema, model, Types } from "mongoose";
+import { Schema, model,SchemaTypes, Types } from "mongoose";
 
 // import the reis module
 import { toJSON } from "@reis/mongoose-to-json";
@@ -22,7 +22,8 @@ const eventSchema = new Schema({
     date: {type: Date},
     // startTime: { type: Date },
     // tickets: { type: String},  
-    image: {type: String},
+    imageUrl: {type: String},
+    favourite: { type: Boolean, default: false}
 }, {
     timestamps: true
 });
